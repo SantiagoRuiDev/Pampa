@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils;
+namespace Module;
 
 use Error;
 use Firebase\JWT\JWT;

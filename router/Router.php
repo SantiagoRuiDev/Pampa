@@ -150,15 +150,13 @@ class Route
     private string $method;
     private array $params;
     private string $middleware;
-    private string $wall;
 
-    public function __construct(string $url, string $verb, string $controller, string $method, string $middleware, string $wall)
+    public function __construct(string $url, string $verb, string $controller, string $method, string $middleware)
     {
         $this->url = $url;
         $this->verb = $verb;
         $this->controller = $controller;
         $this->middleware = $middleware;
-        $this->wall = $wall;
         $this->method = $method;
         $this->params = [];
     }
@@ -198,13 +196,11 @@ class Route
         $request = new Request($params);
         $response = new Response();
         $middlewareClass = '';
-        $wall = '';
 
         if (trim($this->middleware) != '') {
             $middlewareClass = "App\\Middleware\\" . $this->middleware;
-            $wall = $this->wall;
 
-            if ((new $middlewareClass($request))->$wall($request, $response)) {
+            if ((new $middlewareClass($request))->handle($request, $response)) {
                 (new $controllerClass($request))->$method($request, $response);
             }
         } else {
@@ -239,13 +235,13 @@ class Router
             $this->defaultRoute->run();
     }
 
-    public function addRoute(string $url, string $verb, string $controller, string $method, string $middleware, string $wall): void
+    public function addRoute(string $url, string $verb, string $controller, string $method, string $middleware): void
     {
-        $this->routeTable[] = new Route($url, $verb, $controller, $method, $middleware, $wall);
+        $this->routeTable[] = new Route($url, $verb, $controller, $method, $middleware);
     }
 
-    public function setDefaultRoute(string $controller, string $method, string $middleware, string $wall): void
+    public function setDefaultRoute(string $controller, string $method, string $middleware): void
     {
-        $this->defaultRoute = new Route("", "", $controller, $method, $middleware, $wall);
+        $this->defaultRoute = new Route("", "", $controller, $method, $middleware);
     }
 }

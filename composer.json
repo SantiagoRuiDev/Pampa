@@ -10,7 +10,7 @@
     "psr-4": {
       "App\\": "app/",
       "Router\\": "router/",
-      "Utils\\": "utils/"
+      "Module\\": "module/"
     }
   }
 }

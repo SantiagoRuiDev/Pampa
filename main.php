@@ -18,6 +18,8 @@ $initRoutes->addRoute('test', 'GET', 'TestController', 'getExample', 'TestMiddle
 $initRoutes->addRoute('test', 'POST', 'TestController', 'postExample', '', '');
 $initRoutes->addRoute('test', 'DELETE', 'TestController', 'deleteExample', '', '');
 $initRoutes->addRoute('test/:ID', 'PUT', 'TestController', 'putExample', '', '');
+$initRoutes->addRoute('session','GET','TestController','getSessionInfo', '', '');
+$initRoutes->addRoute('session','DELETE','TestController','destroyMySession', '', '');
 
 // Serve added routes
 $initRoutes->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

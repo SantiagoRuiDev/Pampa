@@ -1,9 +1,9 @@
 <?php
 
-namespace Utils;
+namespace Module;
 
 
-use Utils\Token;
+use Module\Token;
 
 
 /**
@@ -32,8 +32,8 @@ class Authentication
      */
     public function setSignature(string $signature): void
     {
-       $this->token->setSignature($signature);
-       return;
+        $this->token->setSignature($signature);
+        return;
     }
 
 
@@ -44,8 +44,8 @@ class Authentication
      */
     public function createToken(): void
     {
-       $this->token->generate();
-       return;
+        $this->token->generate();
+        return;
     }
 
     /**
@@ -75,9 +75,10 @@ class Authentication
      * @param int $seconds The hours/minutes to expire in seconds.
      * @return mixed
      */
-    public function setTokenExpireDate(int $seconds): mixed
+    public function setTokenExpireDate(int $seconds): void
     {
-        return $this->token->setExpireDate($seconds);
+      $this->token->setExpireDate($seconds);
+      return;
     }
 
     /**
@@ -87,9 +88,10 @@ class Authentication
      * @param mixed $value  Insert the data you want store in Payload
      * @return mixed
      */
-    public function setTokenData(string $key, mixed $value): mixed
+    public function setTokenData(string $key, mixed $value): void
     {
-        return $this->token->setData($key, $value);
+        $this->token->setData($key, $value);
+        return;
     }
 
     /**
@@ -103,6 +105,7 @@ class Authentication
         try {
             $information = $this->token->scan($token);
             if ($information) return true;
+            return false;
         } catch (\Throwable $th) {
             return false;
         }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils;
+namespace Module;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;

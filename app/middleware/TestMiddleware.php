@@ -6,14 +6,14 @@ namespace App\Middleware;
 use Error;
 use Router\Response;
 use Router\Request;
-use Utils\Authentication;
+use Module\Authentication;
+use Module\Middleware;
 
-class TestMiddleware
+class TestMiddleware extends Middleware
 {
-    // @ BASE // 
 
-    // @ Check and verify the Body/Headers/Params details here.
-    public function test(Request $req, Response $res): mixed
+    // Follow the abstract class main method and secure your request.
+    public function handle(Request $req, Response $res): bool
     {
         try {
             $headers = $req->getHeaders(); // Load all headers from request.
@@ -36,7 +36,8 @@ class TestMiddleware
             return $req->next();
 
         } catch (\Throwable $th) {
-            return $res->send(array("error" => $th->getMessage()), 400);
+            $res->send(array("error" => $th->getMessage()), 400);
+            return false;
         }
     }
 }
