@@ -7,10 +7,12 @@ use Module\Token;
 
 
 /**
- * Authentication Handler Class
+ * AuthenticationHandler Class
  *
- * Create tokens, encode and decode.
- * Hash passwords, compare passwords
+ * A class for handling user authentication processes.
+ * Provides methods to create, encode, and decode tokens (e.g., JWT).
+ * Includes functionality to hash passwords and compare hashed passwords for secure authentication.
+ * Ideal for managing login, registration, and user validation securely.
  * 
  */
 class Authentication

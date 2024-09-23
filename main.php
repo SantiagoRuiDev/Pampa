@@ -9,17 +9,17 @@ use Router\Router; // Import router class;
 $initRoutes = new Router();
 
 // DEFAULT ROUTE = MAIN ENDPOINT (http://localhost/pampa/api/)
-$initRoutes->setDefaultRoute('TestController', 'getExample', '', '');
+$initRoutes->setDefaultRoute('TestController', 'getExample', '');
 
-                // ENDPOINT  //ACTION   //CONTROLLER    //METHOD  // MIDDLEWARE // MIDDLEWARE METHOD
+                // ENDPOINT  //ACTION   //CONTROLLER    //METHOD  // MIDDLEWARE
                 
-// $initRoutes->addRoute('test/:ID', 'GET', 'TestController', 'getExample', 'TestMiddleware', 'test');
-$initRoutes->addRoute('test', 'GET', 'TestController', 'getExample', 'TestMiddleware', 'test');
-$initRoutes->addRoute('test', 'POST', 'TestController', 'postExample', '', '');
-$initRoutes->addRoute('test', 'DELETE', 'TestController', 'deleteExample', '', '');
-$initRoutes->addRoute('test/:ID', 'PUT', 'TestController', 'putExample', '', '');
-$initRoutes->addRoute('session','GET','TestController','getSessionInfo', '', '');
-$initRoutes->addRoute('session','DELETE','TestController','destroyMySession', '', '');
+// $initRoutes->addRoute('test/:ID', 'GET', 'TestController', 'getExample', 'TestMiddleware');
+$initRoutes->addRoute('test', 'GET', 'TestController', 'getExample', 'TestMiddleware');
+$initRoutes->addRoute('test', 'POST', 'TestController', 'postExample', '');
+$initRoutes->addRoute('test', 'DELETE', 'TestController', 'deleteExample', '');
+$initRoutes->addRoute('test/:ID', 'PUT', 'TestController', 'putExample', '');
+$initRoutes->addRoute('session','GET','TestController','getSessionInfo', '');
+$initRoutes->addRoute('session','DELETE','TestController','destroyMySession', '');
 
 // Serve added routes
 $initRoutes->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

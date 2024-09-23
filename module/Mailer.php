@@ -7,10 +7,11 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 /**
- * Mail Handler Class
+ * MailHandler Class
  *
- * Send mail thought SMTP to your users.
- *
+ * A class for sending emails to users via SMTP.
+ * Provides methods to configure, compose, and send emails securely.
+ * Ideal for sending notifications, password resets, and other automated emails.
  * 
  */
 class Mailer

@@ -9,6 +9,7 @@ use Module\Authentication;
 use Router\Request;
 use Router\Response;
 use Error;
+use Module\Cookie;
 use Module\Session;
 
 class TestController
@@ -53,12 +54,22 @@ class TestController
         $passwordHashExample = $this->authentication->hashPassword("HashingPasswordExample");
         $comparePasswords = $this->authentication->comparePassword("HashingPasswordExample", $passwordHashExample);
 
+        $cookie = new Cookie();
+
+        $cookie->setName("user-preferences");
+        $cookie->setExpiration(86400);
+        $cookie->setPath("/");
+        $cookie->setValue(json_encode(array("user" => "preferences-here")));
+        $cookie->setHttpOnly();
+        $cookie->initialize();
+
         $body = $req->getBody();
 
         // Export the generated token.
         $res->send(array(
             "token" => $this->authentication->exportToken(),
             "passwordMatch" => $comparePasswords,
+            "cookie" => Cookie::fetch("user-preferences"),
             "httpRequestBody" => $body
         ), 200);
         return;

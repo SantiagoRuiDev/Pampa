@@ -5,10 +5,11 @@ namespace Module;
 
 
 /**
- * Session Handler Class
+ * SessionHandler Class
  *
- * Manage sessions, save and get details
- * Init or abort users sessions
+ * A utility class for managing user sessions. 
+ * Provides methods to initialize, retrieve, and destroy sessions.
+ * Ideal for handling user authentication, session data, and session lifecycle management.
  * 
  */
 class Session {

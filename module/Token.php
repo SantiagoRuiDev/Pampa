@@ -7,10 +7,11 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 /**
- * Token Handler Class
+ * TokenHandler Class
  *
- * Create and manage JWT for Authentications.
- *
+ * A class designed to create, validate, and manage JSON Web Tokens (JWT) for user authentication.
+ * It provides methods to generate tokens, verify their authenticity, and handle token expiration.
+ * Ideal for secure user authentication and authorization processes.
  * 
  */
 class Token

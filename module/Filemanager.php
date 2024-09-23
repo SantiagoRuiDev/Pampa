@@ -5,10 +5,11 @@ namespace Module;
 use Error;
 
 /**
- * Files Handler Class
+ * FileHandler Class
  *
- * Save files in your server.
- *
+ * A class to manage file uploads and storage on the server.
+ * Provides methods to save, retrieve, and delete files efficiently.
+ * Ideal for handling user uploads and managing file storage.
  * 
  */
 class Filemanager

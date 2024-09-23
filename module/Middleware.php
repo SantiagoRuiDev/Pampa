@@ -6,10 +6,11 @@ use Router\Request;
 use Router\Response;
 
 /**
- * Middleware Handler Class
+ * Abstract Middleware Class
  *
- * Abstract class for services middlewares,
- * include the handle method and secure your HTTP requests.
+ * An abstract class for implementing service middlewares.
+ * Provides the `handle` method to process and secure HTTP requests.
+ * Designed to add layers of security, validation, and request modification in a service pipeline.
  * 
  */
 abstract class Middleware {

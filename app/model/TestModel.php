@@ -3,27 +3,15 @@
 // @ Copy and paste this base in new Models.
 namespace App\Model;
 
-use App\Database\Database;
-use PDO;
+use Module\Model;
 
-class TestModel
+class TestModel extends Model
 {
-    private PDO $PDO;
+    function get(){
+        $query = $this->statement()->prepare('SELECT * FROM tablename');
 
-    public function __construct()
-    {
-        $initDatabase = new Database();
-        $this->PDO = $initDatabase->connect();
-    }
-    // @ BASE //
+        $rows = $query->fetchAll($query->execute());
 
-    // @ Example of handler for Database Query
-    public function getTest(): array | bool
-    {
-        $statement = $this->PDO->prepare('SELECT * FROM test');
-
-        $query = $statement->fetchAll($statement->execute());
-
-        return $query;
+        return $rows;
     }
 }
